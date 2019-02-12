@@ -24,4 +24,11 @@ public class GetUserByIDFromDB {
     User user = db.getUser("588935f5556f992bf8f37c01");
     assertEquals("Incorrect name", "Bolton Monroe", user.name);
   }
+
+  @Test
+  public void getfailedID() throws IOException {
+    Database db = new Database("src/main/data/users.json");
+    User user = db.getUser("588935f5556f992bf37c01");
+    assertEquals("Incorrect name", null, user);
+  }
 }
