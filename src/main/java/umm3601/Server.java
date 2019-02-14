@@ -4,6 +4,7 @@ import spark.Filter;
 import spark.Request;
 import spark.Response;
 import umm3601.user.Database;
+import umm3601.user.TodoController;
 import umm3601.user.UserController;
 
 import java.io.IOException;
@@ -21,6 +22,9 @@ public class Server {
     // Initialize dependencies
     UserController userController = buildUserController();
 
+    TodoController todoController = buildTodoController();
+
+
     // Configure Spark
     port(4567);
     // Specify where assets like images will be "stored"
@@ -33,6 +37,7 @@ public class Server {
     // Redirects to create simpler URLs
     redirect.get("/about", "/about.html");
     redirect.get("/users", "/users.html");
+    redirect.get("/todo", "/todo.html");
 
     // API endpoints
 
@@ -40,6 +45,9 @@ public class Server {
     get("api/users/:id", userController::getUser);
     // List users, filtered using query parameters
     get("api/users", userController::getUsers);
+
+    ///Load todo.html
+    get("api/todo" , todoController::getTodos);
 
     // An example of throwing an unhandled exception so you can see how the
     // Java Spark debugger displays errors like this.
@@ -82,6 +90,9 @@ public class Server {
 
     return userController;
   }
+   private static TodoController buildTodoController() {
+    TodoController todoController = null;
+   }
 
   // Enable GZIP for all responses
   private static Filter addGzipHeader = (Request request, Response response) -> {
