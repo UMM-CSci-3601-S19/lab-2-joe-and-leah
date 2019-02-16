@@ -15,7 +15,7 @@ import static umm3601.Util.*;
 public class TodoController {
 
   private final Gson gson;
-  private Database database;
+  private TodoDatabase database;
 
   /**
    * Construct a controller for users.
@@ -26,7 +26,7 @@ public class TodoController {
    *
    * @param database the database containing user data
    */
-  public TodoController(Database database) {
+  public TodoController(TodoDatabase database) {
     gson = new Gson();
     this.database = database;
   }
@@ -40,7 +40,7 @@ public class TodoController {
    */
   public JsonObject getTodos(Request req, Response res) {
     res.type("application/json");
-    Todo[] todos = database.listTodos(req.queryMap().toMap());
+    Todo[] todos = database.listTodos();
     return buildSuccessJsonResponse("todos", gson.toJsonTree(todos));
   }
 

@@ -5,6 +5,7 @@ import spark.Request;
 import spark.Response;
 import umm3601.user.Database;
 import umm3601.user.TodoController;
+import umm3601.user.TodoDatabase;
 import umm3601.user.UserController;
 
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class Server {
   public static final String USER_DATA_FILE = "src/main/data/users.json";
   public static final String TODO_DATA_FILE = "src/main/data/todos.json";
   private static Database userDatabase;
-  private static Database todoDatabase;
+  private static TodoDatabase todoDatabase;
 
   public static void main(String[] args) {
 
@@ -96,7 +97,7 @@ public class Server {
     TodoController todoController = null;
 
      try {
-       todoDatabase = new Database(TODO_DATA_FILE);
+       todoDatabase = new TodoDatabase(TODO_DATA_FILE);
        todoController = new TodoController(todoDatabase);
      } catch (IOException e) {
        System.err.println("The server failed to load the todo data; shutting down.");
