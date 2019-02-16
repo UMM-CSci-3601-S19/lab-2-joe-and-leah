@@ -15,7 +15,9 @@ import static spark.debug.DebugScreen.*;
 public class Server {
 
   public static final String USER_DATA_FILE = "src/main/data/users.json";
+  public static final String TODO_DATA_FILE = "src/main/data/todos.json";
   private static Database userDatabase;
+  private static Database todoDatabase;
 
   public static void main(String[] args) {
 
@@ -92,6 +94,20 @@ public class Server {
   }
    private static TodoController buildTodoController() {
     TodoController todoController = null;
+
+     try {
+       todoDatabase = new Database(TODO_DATA_FILE);
+       todoController = new TodoController(todoDatabase);
+     } catch (IOException e) {
+       System.err.println("The server failed to load the todo data; shutting down.");
+       e.printStackTrace(System.err);
+
+       // Shut the server down
+       stop();
+       System.exit(1);
+     }
+
+     return todoController;
    }
 
   // Enable GZIP for all responses

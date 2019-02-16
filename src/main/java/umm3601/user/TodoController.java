@@ -32,36 +32,16 @@ public class TodoController {
   }
 
   /**
-   * Get the single user specified by the `id` parameter in the request.
-   *
-   * @param req the HTTP request
-   * @param res the HTTP response
-   * @return a success JSON object if the user with that ID is found, a fail
-   * JSON object if no user with that ID is found
-   */
-  public JsonObject getUser(Request req, Response res) {
-    res.type("application/json");
-    String id = req.params("id");
-    User user = database.getUser(id);
-    if (user != null) {
-      return buildSuccessJsonResponse("user", gson.toJsonTree(user));
-    } else {
-      String message = "User with ID " + id + " wasn't found.";
-      return buildFailJsonResponse("id", message);
-    }
-  }
-
-  /**
    * Get a JSON response with a list of all the users in the "database".
    *
    * @param req the HTTP request
    * @param res the HTTP response
    * @return a success JSON object containing all the users
    */
-  public JsonObject getUsers(Request req, Response res) {
+  public JsonObject getTodos(Request req, Response res) {
     res.type("application/json");
-    User[] users = database.listUsers(req.queryMap().toMap());
-    return buildSuccessJsonResponse("users", gson.toJsonTree(users));
+    Todo[] todos = database.listTodos(req.queryMap().toMap());
+    return buildSuccessJsonResponse("todos", gson.toJsonTree(todos));
   }
 
 }
