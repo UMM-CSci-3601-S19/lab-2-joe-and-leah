@@ -50,7 +50,7 @@ public class Server {
     get("api/users", userController::getUsers);
 
     ///Load todo.html
-    get("api/todo" , todoController::getTodos);
+    get("api/todos" , todoController::getTodos);
 
     // An example of throwing an unhandled exception so you can see how the
     // Java Spark debugger displays errors like this.
