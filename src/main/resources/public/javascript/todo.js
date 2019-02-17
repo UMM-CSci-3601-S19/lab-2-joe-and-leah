@@ -1,3 +1,5 @@
+
+
 function getAllToDos() {
   console.log("Getting all the ToDos.");
 
@@ -5,6 +7,24 @@ function getAllToDos() {
   HttpThingy.get("/api/todos", function (returned_json) {
     document.getElementById('jsonToDump').innerHTML = returned_json;
   });
+}
+
+function getCompleteToDos() {
+
+  var HttpThiny = new HttpClient();
+  HttpThiny.get("api/todos?status=complete", function (returned_jason) {
+    document.getElementById('jsonToDump').innerHTML = returned_jason;
+  });
+
+}
+
+function getIncompleteToDos() {
+
+  var HttpThiny = new HttpClient();
+  HttpThiny.get("api/todos?status=incomplete", function (returned_jason) {
+    document.getElementById('jsonToDump').innerHTML = returned_jason;
+  });
+
 }
 
 function HttpClient() {

@@ -13,12 +13,19 @@
     var element = document.getElementById('getAll');
     element.addEventListener("click", getAllToDos, true);
 
+    element = document.getElementById('getComplete');
+    element.addEventListener("click", getCompleteToDos, true);
+
+      element = document.getElementById('getIncomplete');
+      element.addEventListener("click", getIncompleteToDos, true);
     }
     </script>
 </head>
 
 <body>
 <button type="button" id="getAll">Get All ToDos</button>
+<button type="button" id="getComplete">Get Complete Status ToDos</button>
+<button type="button" id="getIncomplete">Get Incomplete Status ToDos</button>
 <div id="jsonToDump" style="margin-top:20px"> Json will go here</div>
 </body>
 
