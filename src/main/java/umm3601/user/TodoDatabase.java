@@ -29,10 +29,13 @@ public class TodoDatabase {
       // Filter age if defined
       if (queryParams.containsKey("status")) {
         boolean compstat = (Objects.equals(queryParams.get("status")[0], "complete"));
-        System.out.println(compstat);
         filteredTodos = filterStatusTodo(filteredTodos, compstat);
       }
       // Process other query parameters here...
+     if (queryParams.containsKey("body")) {
+        String word = (queryParams.get("body")[0]);
+        filteredTodos = filterBodyTodo(filteredTodos, word);
+      }
 
       return filteredTodos;
     }
@@ -41,5 +44,9 @@ public class TodoDatabase {
   public Todo[] filterStatusTodo(Todo[] todos, boolean compstatus) {
       return Arrays.stream(todos).filter(x -> x.status == compstatus).toArray(Todo[]::new);
     }
+
+  public Todo[] filterBodyTodo(Todo[] todos, String word) {
+    return Arrays.stream(todos).filter(x -> x.body.contains(word)).toArray(Todo[]::new);
+  }
 
 }

@@ -27,6 +27,15 @@ function getIncompleteToDos() {
 
 }
 
+
+function getBodyToDos() {
+
+  var HttpThiny = new HttpClient();
+  HttpThiny.get("api/todos?body=" + document.getElementById("body").value, function (returned_jason) {
+    document.getElementById('jsonToDump').innerHTML = returned_jason;
+  });
+}
+
 function HttpClient() {
   // We'll take a URL string, and a callback function.
   this.get = function (aUrl, aCallback) {

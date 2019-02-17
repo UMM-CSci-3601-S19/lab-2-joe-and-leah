@@ -16,8 +16,11 @@
     element = document.getElementById('getComplete');
     element.addEventListener("click", getCompleteToDos, true);
 
-      element = document.getElementById('getIncomplete');
-      element.addEventListener("click", getIncompleteToDos, true);
+    element = document.getElementById('getIncomplete');
+    element.addEventListener("click", getIncompleteToDos, true);
+
+    element = document.getElementById('getBody');
+    element.addEventListener("click", getBodyToDos, true);
     }
     </script>
 </head>
@@ -26,6 +29,10 @@
 <button type="button" id="getAll">Get All ToDos</button>
 <button type="button" id="getComplete">Get Complete Status ToDos</button>
 <button type="button" id="getIncomplete">Get Incomplete Status ToDos</button>
+
+<label for="body">body:</label><input id="body" type="text" name="body">
+<button type="button" id="getBody"> get todos by body</button>
+
 <div id="jsonToDump" style="margin-top:20px"> Json will go here</div>
 </body>
 
