@@ -1,0 +1,38 @@
+body {
+  font-size: 1.2rem;
+  line-height: 1.618;
+  max-width: 38em;
+  margin: auto;
+  color: #4a4a4a;
+  background-color: #f9f9f9;
+  padding: 13px;
+
+}
+.btn-group button {
+  background-color: #95b3c4;
+  border: 1px solid black;
+  color: black;
+  padding: 10px 24px;
+  cursor: pointer;
+  width: 35%;
+  display: block;
+}
+
+.btn-group button:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: #3e8e41;
+}
+
+#getComplete {
+  background-color: forestgreen;
+  color: white;
+}
+
+#getIncomplete {
+  background-color: crimson;
+  color: white;
+}

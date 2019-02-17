@@ -37,6 +37,20 @@ public class TodoDatabase {
         filteredTodos = filterBodyTodo(filteredTodos, word);
       }
 
+       if (queryParams.containsKey("_id")) {
+        String word = (queryParams.get("_id")[0]);
+        filteredTodos = filterIDTodo(filteredTodos, word);
+      }
+
+       if (queryParams.containsKey("owner")) {
+        String word = (queryParams.get("owner")[0]);
+        filteredTodos = filterOwnerTodo(filteredTodos, word);
+      }
+
+       if (queryParams.containsKey("category")) {
+        String word = (queryParams.get("category")[0]);
+        filteredTodos = filterCategoryTodo(filteredTodos, word);
+      }
       return filteredTodos;
     }
 
@@ -47,6 +61,15 @@ public class TodoDatabase {
 
   public Todo[] filterBodyTodo(Todo[] todos, String word) {
     return Arrays.stream(todos).filter(x -> x.body.contains(word)).toArray(Todo[]::new);
+  }
+  public Todo[] filterIDTodo(Todo[] todos, String word) {
+    return Arrays.stream(todos).filter(x -> x._id.contains(word)).toArray(Todo[]::new);
+  }
+  public Todo[] filterOwnerTodo(Todo[] todos, String word) {
+    return Arrays.stream(todos).filter(x -> x.owner.contains(word)).toArray(Todo[]::new);
+  }
+  public Todo[] filterCategoryTodo(Todo[] todos, String word) {
+    return Arrays.stream(todos).filter(x -> x.category.contains(word)).toArray(Todo[]::new);
   }
 
 }

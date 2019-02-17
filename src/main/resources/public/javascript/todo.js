@@ -36,6 +36,30 @@ function getBodyToDos() {
   });
 }
 
+function getOwnerToDos() {
+
+  var HttpThiny = new HttpClient();
+  HttpThiny.get("api/todos?owner=" + document.getElementById("owner").value, function (returned_jason) {
+    document.getElementById('jsonToDump').innerHTML = returned_jason;
+  });
+}
+
+function getIDToDos() {
+
+  var HttpThiny = new HttpClient();
+  HttpThiny.get("api/todos?_id=" + document.getElementById("_id").value, function (returned_jason) {
+    document.getElementById('jsonToDump').innerHTML = returned_jason;
+  });
+}
+
+function getCategoryToDos() {
+
+  var HttpThiny = new HttpClient();
+  HttpThiny.get("api/todos?category=" + document.getElementById("category").value, function (returned_jason) {
+    document.getElementById('jsonToDump').innerHTML = returned_jason;
+  });
+}
+
 function HttpClient() {
   // We'll take a URL string, and a callback function.
   this.get = function (aUrl, aCallback) {
