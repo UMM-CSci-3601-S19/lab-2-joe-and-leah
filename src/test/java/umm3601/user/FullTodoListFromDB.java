@@ -17,7 +17,7 @@ public class FullTodoListFromDB {
   @Test
   public void totalTodoTrueCount() throws IOException {
     TodoDatabase db = new TodoDatabase("src/main/data/todos.json");
-    Todo[] trueTodos = db.filterStatusTodo(true);
+    Todo[] trueTodos = db.filterStatusTodo(db.listTodos(), true);
     assertEquals("Incorrect number of True todos", 143, trueTodos.length);
   }
 }
