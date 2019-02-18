@@ -81,12 +81,9 @@ function getComboTodos() {
   if (!(document.getElementById("category").value === "")){rest += "category=" + document.getElementById("category").value + "&"}
   if (!(document.getElementById("limit").value ==="") ){rest += "limit=" + document.getElementById("limit").value}
 
-  console.log(rest);
-
   var HttpThiny = new HttpClient();
   HttpThiny.get("api/todos" + rest, function (returned_jason) {
     document.getElementById('jsonToDump').innerHTML = returned_jason;
-    console.log(returned_jason);
   });
 }
 
