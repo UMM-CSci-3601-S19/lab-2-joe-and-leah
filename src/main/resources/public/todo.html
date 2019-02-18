@@ -12,7 +12,7 @@
     console.log("The page is loaded now!");
 
     var element = document.getElementById('getAll');
-    element.addEventListener("click", getAllToDos, true);
+    element.addEventListener("'change", getAllToDos, true);
 
     element = document.getElementById('getComplete');
     element.addEventListener("click", getCompleteToDos, true);
@@ -31,6 +31,14 @@
 
     element = document.getElementById('getCategory');
     element.addEventListener("click", getCategoryToDos, true);
+
+    element = document.getElementById('getNTodos');
+    element.addEventListener("click", getNTodos, true);
+
+    element = document.getElementById('getComboTodos');
+    element.addEventListener("click", getComboTodos, true);
+
+
     }
     </script>
 </head>
@@ -40,6 +48,11 @@
 <hr/>
 
 <div class="btn-group">
+
+
+  <input type="checkbox" id="getCompleteCheck">Get Complete Status ToDos<br>
+  <input type="checkbox" id="getIncompleteCheck">Get Incomplete Status ToDos<br>
+
 
   <button type="button" id="getComplete">Get Complete Status ToDos</button>
 
@@ -56,6 +69,14 @@
 
   <label for="category">Category:</label><input id="category" type="text" name="category">
   <button type="button" id="getCategory"> Get ToDos by Category</button>
+
+  <label for="limit">Limit:</label><input id="limit" type="text" name="limit">
+  <button type="button" id="getNTodos"> Get This Many ToDos</button>
+
+  <hr/>
+  <button type="button" id="getComboTodos"> Get Your Filtered ToDos </button>
+
+
 </div>
 
 <div id="jsonToDump" style="margin-top:20px"> Json will go here</div>

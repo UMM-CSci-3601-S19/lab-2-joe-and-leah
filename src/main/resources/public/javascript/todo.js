@@ -27,7 +27,6 @@ function getIncompleteToDos() {
 
 }
 
-
 function getBodyToDos() {
 
   var HttpThiny = new HttpClient();
@@ -57,6 +56,37 @@ function getCategoryToDos() {
   var HttpThiny = new HttpClient();
   HttpThiny.get("api/todos?category=" + document.getElementById("category").value, function (returned_jason) {
     document.getElementById('jsonToDump').innerHTML = returned_jason;
+  });
+}
+
+function getNTodos() {
+
+  var HttpThiny = new HttpClient();
+  HttpThiny.get("api/todos?limit=" + document.getElementById("limit").value, function (returned_jason) {
+    document.getElementById('jsonToDump').innerHTML = returned_jason;
+  });
+}
+
+function getComboTodos() {
+
+  var rest = "?";
+  if (!(document.getElementById("getCompleteCheck").checked && document.getElementById("getIncompleteCheck").checked)) {
+    if (document.getElementById("getCompleteCheck").checked) {rest += "status=complete&" }
+    if (document.getElementById("getIncompleteCheck").checked){rest += "status=incomplete&"}
+  }
+
+  if (!(document.getElementById("body").value === "")){rest += "body=" + document.getElementById("body").value + "&"}
+  if (!(document.getElementById("owner").value ==="") ){rest += "owner=" + document.getElementById("owner").value + "&"}
+  if (!(document.getElementById("_id").value ==="")){rest += "id=" + document.getElementById("_id").value + "&"}
+  if (!(document.getElementById("category").value === "")){rest += "category=" + document.getElementById("category").value + "&"}
+  if (!(document.getElementById("limit").value ==="") ){rest += "limit=" + document.getElementById("limit").value}
+
+  console.log(rest);
+
+  var HttpThiny = new HttpClient();
+  HttpThiny.get("api/todos" + rest, function (returned_jason) {
+    document.getElementById('jsonToDump').innerHTML = returned_jason;
+    console.log(returned_jason);
   });
 }
 

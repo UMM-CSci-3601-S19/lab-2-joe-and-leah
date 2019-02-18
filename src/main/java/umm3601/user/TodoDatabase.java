@@ -18,10 +18,6 @@ public class TodoDatabase {
     FileReader reader = new FileReader(todoDataFile);
     allTodos = gson.fromJson(reader, Todo[].class);
   }
-  public Todo[] listTodos(){
-    return allTodos;
-  }
-
 
   public Todo[] listTodos(Map<String, String[]> queryParams) {
       Todo[] filteredTodos = allTodos;
@@ -53,7 +49,7 @@ public class TodoDatabase {
       }
        if (queryParams.containsKey("limit")) {
         int limit = Integer.parseInt(queryParams.get("limit")[0]);
-        filteredTodos = Arrays.copyOfRange(allTodos,0,limit);
+        filteredTodos = Arrays.copyOfRange(filteredTodos,0,limit);
       }
       return filteredTodos;
     }
