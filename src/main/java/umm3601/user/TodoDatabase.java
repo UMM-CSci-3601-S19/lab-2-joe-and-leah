@@ -19,6 +19,10 @@ public class TodoDatabase {
     allTodos = gson.fromJson(reader, Todo[].class);
   }
 
+  public Todo[] listTodos(){
+    return allTodos;
+  }
+
   public Todo[] listTodos(Map<String, String[]> queryParams) {
       Todo[] filteredTodos = allTodos;
 
