@@ -77,7 +77,7 @@ function getComboTodos() {
 
   if (!(document.getElementById("body").value === "")){rest += "body=" + document.getElementById("body").value + "&"}
   if (!(document.getElementById("owner").value ==="") ){rest += "owner=" + document.getElementById("owner").value + "&"}
-  if (!(document.getElementById("_id").value ==="")){rest += "id=" + document.getElementById("_id").value + "&"}
+  if (!(document.getElementById("_id").value ==="")){rest += "_id=" + document.getElementById("_id").value + "&"}
   if (!(document.getElementById("category").value === "")){rest += "category=" + document.getElementById("category").value + "&"}
   if (!(document.getElementById("limit").value ==="") ){rest += "limit=" + document.getElementById("limit").value}
 
